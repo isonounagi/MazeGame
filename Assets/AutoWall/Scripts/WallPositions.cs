@@ -8,6 +8,8 @@ public class WallPositions : MonoBehaviour
     Vector3 WallPos; //生成する壁のワールド座標
     public GameObject AutoWalls;　//壁の位置プレハブ
     public GameObject AutoWallPrefab;
+    public GameObject Door_Horizontal;
+    public GameObject Door_Vertical;
 
     public int Width { get; }
     public int Height { get; }
@@ -167,13 +169,60 @@ public class WallPositions : MonoBehaviour
         {
             CurrentWallCells.Push(new Cell(x, y));
         }
+
         Instantiate(AutoWallPrefab, AutoWallPos[x][y].transform);
+
+        
     }
 
     // 拡張中の座標かどうか判定
     private bool IsCurrentWall(int x, int y)
     {
         return CurrentWallCells.Contains(new Cell(x, y));
+    }
+
+    private void ChangeWall()
+    {
+        for(int l = 1; l <= 19; l++)
+        {
+            for (int p = 1; p <= 19; p++)
+            {
+                if (AutoWallPos[l][p - 1].tag == "Path" && AutoWallPos[l][p + 1].tag == "Path")
+                {
+                    int r = Random.Range(1, 11);
+                    if (r <= 2)
+                    {
+                        Destroy(AutoWallPos[l][p].GetComponentInChildren<GameObject>().gameObject);
+                        Instantiate(Door_Horizontal, AutoWallPos[l][p].transform);
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+                else if (AutoWallPos[l - 1][p].tag == "Path" && AutoWallPos[l + 1][p].tag == "Path")
+                {
+                    int r = Random.Range(1, 11);
+                    if (r <= 2)
+                    {
+                        Destroy(AutoWallPos[l][p].GetComponentInChildren<GameObject>().gameObject);
+                        Instantiate(Door_Vertical, AutoWallPos[l][p].transform);
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+        
+        
     }
 
     // Start is called before the first frame update
@@ -212,7 +261,9 @@ public class WallPositions : MonoBehaviour
         }
 
         CreateMaze();
-        
+
+        ChangeWall();
+
     }
 
     // Update is called once per frame

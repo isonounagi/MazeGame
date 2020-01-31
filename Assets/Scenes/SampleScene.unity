@@ -349,6 +349,10 @@ MonoBehaviour:
     type: 3}
   AutoWallPrefab: {fileID: 1567903469128442014, guid: ca1fcb3344e461f4e87dbe942a9cf5c4,
     type: 3}
+  Door_Horizontal: {fileID: 2016281737172293731, guid: 9e507172bc799f84f9302871e0ff71b1,
+    type: 3}
+  Door_Vertical: {fileID: 8112673516436714494, guid: fe8d9ac48e1627d4999280118a1ad4d9,
+    type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
