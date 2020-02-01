@@ -172,7 +172,6 @@ public class WallPositions : MonoBehaviour
 
         Instantiate(AutoWallPrefab, AutoWallPos[x][y].transform);
 
-        
     }
 
     // 拡張中の座標かどうか判定
@@ -190,34 +189,24 @@ public class WallPositions : MonoBehaviour
                 if (AutoWallPos[l][p - 1].tag == "Path" && AutoWallPos[l][p + 1].tag == "Path")
                 {
                     int r = Random.Range(1, 11);
-                    if (r <= 2)
+                    if (r < 2)
                     {
-                        Destroy(AutoWallPos[l][p].GetComponentInChildren<GameObject>().gameObject);
-                        Instantiate(Door_Horizontal, AutoWallPos[l][p].transform);
-                    }
-                    else
-                    {
-                        return;
+                        Destroy(AutoWallPos[l][p].gameObject);
+                        Instantiate(Door_Horizontal, AutoWallPos[l][p].transform.position, Quaternion.identity);
+                        Debug.Log(AutoWallPos[l][p]);
                     }
 
                 }
                 else if (AutoWallPos[l - 1][p].tag == "Path" && AutoWallPos[l + 1][p].tag == "Path")
                 {
                     int r = Random.Range(1, 11);
-                    if (r <= 2)
+                    if (r < 2)
                     {
-                        Destroy(AutoWallPos[l][p].GetComponentInChildren<GameObject>().gameObject);
-                        Instantiate(Door_Vertical, AutoWallPos[l][p].transform);
-                    }
-                    else
-                    {
-                        return;
+                        Destroy(AutoWallPos[l][p].gameObject);
+                        Instantiate(Door_Vertical, AutoWallPos[l][p].transform.position, Quaternion.identity);
+                        Debug.Log(AutoWallPos[l][p]);
                     }
 
-                }
-                else
-                {
-                    return;
                 }
             }
         }
@@ -253,7 +242,7 @@ public class WallPositions : MonoBehaviour
                 WallPos.y = 0.5f;
 
                 AutoWallPos[n][i] = Instantiate(AutoWalls, WallPos, Quaternion.identity);
-                
+
             }
 
             WallPos.z--;
