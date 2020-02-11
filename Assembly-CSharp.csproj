@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AutoWall\Scripts\WallPositions.cs" />
+    <Compile Include="Assets\Camera\Scripts\CameraChange.cs" />
     <Compile Include="Assets\cave_troll\scripts\camera_follow.cs" />
     <Compile Include="Assets\Player\Knight\scripts\rotator.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerMove.cs" />
