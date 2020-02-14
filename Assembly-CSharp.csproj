@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\AutoWall\Scripts\WallPositions.cs" />
     <Compile Include="Assets\Camera\Scripts\CameraChange.cs" />
-    <Compile Include="Assets\cave_troll\scripts\camera_follow.cs" />
+    <Compile Include="Assets\Enemy\cave_troll\scripts\camera_follow.cs" />
     <Compile Include="Assets\Player\Knight\scripts\rotator.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\torch\scene\script\TorchSlider.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="Assets\torch\scripts\Torchelight.cs" />
     <None Include="Assets\Player\Knight\shaders\doublesidedshader.shader" />
     <None Include="Assets\torch\readme.txt" />
-    <None Include="Assets\cave_troll\shaders\Standard Two Sided Soft Blend.shader" />
+    <None Include="Assets\Enemy\cave_troll\shaders\Standard Two Sided Soft Blend.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/isono/MazeGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
