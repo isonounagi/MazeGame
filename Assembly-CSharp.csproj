@@ -65,6 +65,7 @@
     <Compile Include="Assets\AutoWall\Scripts\WallPositions.cs" />
     <Compile Include="Assets\Camera\Scripts\CameraChange.cs" />
     <Compile Include="Assets\Enemy\cave_troll\scripts\camera_follow.cs" />
+    <Compile Include="Assets\Enemy\Scripts\EnemyMove.cs" />
     <Compile Include="Assets\Player\Knight\scripts\rotator.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\torch\scene\script\TorchSlider.cs" />
@@ -645,6 +646,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{4523C63B-A14D-4336-DE4A-57F2D2991396}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{D68E35F1-6DAA-F5BB-84C6-139581D6F820}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{5F8D3F04-77C6-4F78-3665-363BF92E833C}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

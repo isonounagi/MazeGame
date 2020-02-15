@@ -7,6 +7,9 @@ public class PlayerMove : MonoBehaviour
     private CharacterController characterController;
     private Animator animator;
     private Vector3 velocity;
+
+    private GameObject player;
+    public static Vector3 playerPos; //プレイヤーの位置を他から参照できるようにする（敵の追跡などに使う）
     
     [SerializeField]
     private float moveSpeed;
@@ -14,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        player = GameObject.Find("knight");
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
@@ -21,6 +25,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        playerPos = player.transform.position;
+
         if (CameraChange.mainCameraActivate % 2 == 0)
         {
             if (characterController.isGrounded)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WallPositions : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class WallPositions : MonoBehaviour
 
     public int Width { get; }
     public int Height { get; }
+
+    
 
     // セル情報
     private struct Cell
@@ -68,6 +71,7 @@ public class WallPositions : MonoBehaviour
                 else
                 {
                     this.AutoWallPos[x][y].tag = "Path";
+                    
                     // 外周ではない偶数座標を壁伸ばし開始点にしておく
                     if (x % 2 == 0 && y % 2 == 0)
                     {
@@ -193,7 +197,7 @@ public class WallPositions : MonoBehaviour
                     {
                         Destroy(AutoWallPos[l][p].gameObject);
                         Instantiate(Door_Horizontal, AutoWallPos[l][p].transform.position, Quaternion.identity);
-                        Debug.Log(AutoWallPos[l][p]);
+                        AutoWallPos[l][p].tag = "RoopHole";
                     }
 
                 }
@@ -204,7 +208,7 @@ public class WallPositions : MonoBehaviour
                     {
                         Destroy(AutoWallPos[l][p].gameObject);
                         Instantiate(Door_Vertical, AutoWallPos[l][p].transform.position, Quaternion.identity);
-                        Debug.Log(AutoWallPos[l][p]);
+                        AutoWallPos[l][p].tag = "RoopHole";
                     }
 
                 }
@@ -213,6 +217,8 @@ public class WallPositions : MonoBehaviour
         
         
     }
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -248,6 +254,7 @@ public class WallPositions : MonoBehaviour
             WallPos.z--;
 
         }
+        
 
         CreateMaze();
 
