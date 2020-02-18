@@ -160,6 +160,9 @@ public class EnemyMove : MonoBehaviour
     private GameObject enemy;
     private Vector3 enemyPos;
     private CharacterController enemyController;
+    private Rigidbody rigidbody;
+
+    private Animator enemyAnimator;
 
     private NavMeshAgent enemyNavMesh;
 
@@ -170,6 +173,8 @@ public class EnemyMove : MonoBehaviour
     {
         enemyController = GetComponent<CharacterController>();
         enemyNavMesh = GetComponent<NavMeshAgent>();
+        enemyAnimator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -205,6 +210,13 @@ public class EnemyMove : MonoBehaviour
         if (PlayerMove.playerPos != null)
         {
             enemyNavMesh.destination = PlayerMove.playerPos;
+            
+            enemyAnimator.SetFloat("Speed", enemyMoveSpeed);
+            
+            if(rigidbody.IsSleeping())
+            {
+                enemyAnimator.SetFloat("Speed", 0f);
+            }
         }
 
     }
