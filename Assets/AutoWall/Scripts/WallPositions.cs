@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class WallPositions : MonoBehaviour
 {
-    GameObject[][] AutoWallPos = new GameObject[21][];
+    public GameObject[][] AutoWallPos = new GameObject[21][];
     Vector3 WallPos; //生成する壁のワールド座標
     public GameObject AutoWalls;　//壁の位置プレハブ
     public GameObject AutoWallPrefab;
@@ -15,7 +15,7 @@ public class WallPositions : MonoBehaviour
     public int Width { get; }
     public int Height { get; }
 
-    
+    NavMeshSurface navMeshSurface;
 
     // セル情報
     private struct Cell
@@ -58,6 +58,9 @@ public class WallPositions : MonoBehaviour
 
     public GameObject[][] CreateMaze()
     {
+
+        
+
         // 各マスの初期設定を行う
         for (int y = 0; y < this.Height; y++)
         {
@@ -71,7 +74,7 @@ public class WallPositions : MonoBehaviour
                 else
                 {
                     this.AutoWallPos[x][y].tag = "Path";
-                    
+
                     // 外周ではない偶数座標を壁伸ばし開始点にしておく
                     if (x % 2 == 0 && y % 2 == 0)
                     {
@@ -218,6 +221,19 @@ public class WallPositions : MonoBehaviour
         
     }
 
+    /*private void NavMeshCreation()
+    {
+        for (int z = 1; z < 19; z++)
+        {
+            for (int x = 1; x < 19; x++)
+            {
+                if(AutoWallPos[z][x].gameObject.tag == "Path")
+                {
+                    navMeshSurface.BuildNavMesh();
+                }
+            }
+        }
+    }*/
     
 
     // Start is called before the first frame update
@@ -254,11 +270,15 @@ public class WallPositions : MonoBehaviour
             WallPos.z--;
 
         }
-        
 
+        
         CreateMaze();
 
         ChangeWall();
+
+        navMeshSurface = transform.GetComponent<NavMeshSurface>();
+
+        //NavMeshCreation();
 
     }
 

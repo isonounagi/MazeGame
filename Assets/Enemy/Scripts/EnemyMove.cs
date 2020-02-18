@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {   /* 
@@ -155,9 +156,12 @@ public class EnemyMove : MonoBehaviour
         Move(Time.deltaTime);
     }
     */
+
     private GameObject enemy;
     private Vector3 enemyPos;
     private CharacterController enemyController;
+
+    private NavMeshAgent enemyNavMesh;
 
     [SerializeField]
     private float enemyMoveSpeed;
@@ -165,6 +169,7 @@ public class EnemyMove : MonoBehaviour
     private void Start()
     {
         enemyController = GetComponent<CharacterController>();
+        enemyNavMesh = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
@@ -172,9 +177,9 @@ public class EnemyMove : MonoBehaviour
         
         enemy = GameObject.Find("troll_");
         enemyPos = enemy.transform.position;
+
+        /*
         Ray rayForward = new Ray(enemyPos, transform.TransformDirection(Vector3.forward));
-        Ray rayLeft = new Ray(enemyPos, transform.TransformDirection(Vector3.left));
-        Ray rayRight = new Ray(enemyPos, transform.TransformDirection(Vector3.right));
 
         RaycastHit hit;
 
@@ -195,10 +200,12 @@ public class EnemyMove : MonoBehaviour
         {
             enemyController.Move(this.gameObject.transform.forward * enemyMoveSpeed * Time.deltaTime);
         }
+        */
 
-        Debug.DrawRay(enemyPos, transform.TransformDirection(Vector3.forward) * 10.5f, Color.red);
-        Debug.DrawRay(enemyPos, transform.TransformDirection(Vector3.left) * 10.5f, Color.red);
-        Debug.DrawRay(enemyPos, transform.TransformDirection(Vector3.right) * 10.5f, Color.red);
+        if (PlayerMove.playerPos != null)
+        {
+            enemyNavMesh.destination = PlayerMove.playerPos;
+        }
 
     }
     
