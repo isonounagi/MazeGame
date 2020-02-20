@@ -12,9 +12,12 @@ public class CameraChange : MonoBehaviour
     public GameObject otherCamera;
 
     [SerializeField]
+    public GameObject zoomCamera;
+
+    [SerializeField]
     private GameObject player;
 
-    static public int mainCameraActivate;
+    static public int mainCameraActivate = 1;
 
     
 
@@ -47,6 +50,13 @@ public class CameraChange : MonoBehaviour
                     otherCamera.transform.RotateAround(player.transform.position, Vector3.up, mouseInputX * Time.deltaTime * 200f);
 
                 }
+        }
+
+        if(mainCameraActivate == 0)
+        {
+            mainCamera.SetActive(false);
+            otherCamera.SetActive(false);
+            zoomCamera.SetActive(true);
         }
     }
 }

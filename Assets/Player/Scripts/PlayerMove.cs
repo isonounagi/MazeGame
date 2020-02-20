@@ -14,12 +14,15 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    public static bool isAnyKeyEnabled;
+
     // Use this for initialization
     void Start()
     {
         player = GameObject.Find("knight");
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        isAnyKeyEnabled = true;
     }
 
     // Update is called once per frame
@@ -28,58 +31,67 @@ public class PlayerMove : MonoBehaviour
         
         playerPos = player.transform.position;
 
-        if (CameraChange.mainCameraActivate % 2 == 0)
+        if (isAnyKeyEnabled)
         {
-            if (characterController.isGrounded)
+            if (CameraChange.mainCameraActivate % 2 == 0)
             {
-                velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+                velocity = new Vector3(0, 0, 0);
 
-                if (velocity.magnitude > 0.1f)
+                if (characterController.isGrounded)
                 {
-                    animator.SetFloat("Speed", velocity.magnitude);
-                    transform.LookAt(transform.position + velocity);
-                }
-                else
-                {
-                    animator.SetFloat("Speed", 0f);
-                }
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        characterController.Move(this.gameObject.transform.forward * moveSpeed * Time.deltaTime);//前方にMoveSpeed * 時間経過分動かす
+                    }
+                    /*if (Input.GetKey(KeyCode.S))
+                    {
+                        characterController.Move(this.gameObject.transform.forward * -1 * moveSpeed * Time.deltaTime);//後方にMoveSpeed * 時間経過分動かす
+                    }*/
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        transform.Rotate(new Vector3(0, -5, 0));//左回転する        
+                    }
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        transform.Rotate(new Vector3(0, 5, 0));//右回転する        
+                    }
 
-            }
-        }
-        else
-        {
-            velocity = new Vector3(0, 0, 0);
-
-            if (characterController.isGrounded)
-            {
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    characterController.Move(this.gameObject.transform.forward * moveSpeed * Time.deltaTime);//前方にMoveSpeed * 時間経過分動かす
-                }
-                /*if (Input.GetKey(KeyCode.S))
-                {
-                    characterController.Move(this.gameObject.transform.forward * -1 * moveSpeed * Time.deltaTime);//後方にMoveSpeed * 時間経過分動かす
-                }*/
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    transform.Rotate(new Vector3(0, -5, 0));//左回転する        
-                }
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    transform.Rotate(new Vector3(0, 5, 0));//右回転する        
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    animator.SetFloat("Speed", 1f);
-                }
-                else
-                {
-                    animator.SetFloat("Speed", 0f);
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        animator.SetFloat("Speed", 1f);
+                    }
+                    else
+                    {
+                        animator.SetFloat("Speed", 0f);
+                    }
                 }
             }
+            else
+            {
+                if (characterController.isGrounded)
+                {
+                    velocity = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+
+                    if (velocity.magnitude > 0.1f)
+                    {
+                        animator.SetFloat("Speed", velocity.magnitude);
+                        transform.LookAt(transform.position + velocity);
+                    }
+                    else
+                    {
+                        animator.SetFloat("Speed", 0f);
+                    }
+
+                }
+                
+            }
         }
-        
+
+        if(CameraChange.mainCameraActivate == 0)
+        {
+            moveSpeed = 0;
+        }
+
         velocity.y += Physics.gravity.y * Time.deltaTime;
         characterController.Move(velocity * moveSpeed * Time.deltaTime);
     }

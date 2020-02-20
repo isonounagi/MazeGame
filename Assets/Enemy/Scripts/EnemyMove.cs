@@ -162,6 +162,11 @@ public class EnemyMove : MonoBehaviour
     private CharacterController enemyController;
     private Rigidbody rigidbody;
 
+    private Vector3 dir;
+    private GameObject mainCamera;
+    private GameObject otherCamera;
+    private GameObject zoomCamera;
+
     private Animator enemyAnimator;
 
     private NavMeshAgent enemyNavMesh;
@@ -175,6 +180,10 @@ public class EnemyMove : MonoBehaviour
         enemyNavMesh = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+
+        mainCamera = GameObject.Find("Main Camera");
+        otherCamera = GameObject.Find("Camera");
+        zoomCamera = GameObject.Find("ZoomCamera");
     }
 
     private void Update()
@@ -210,8 +219,20 @@ public class EnemyMove : MonoBehaviour
         if (PlayerMove.playerPos != null)
         {
             enemyNavMesh.destination = PlayerMove.playerPos;
+
+            dir = PlayerMove.playerPos - enemyPos;
+            float d = dir.magnitude;
             
             enemyAnimator.SetFloat("Speed", enemyMoveSpeed);
+
+            if (d <= 1.3f)
+            {
+                CameraChange.mainCameraActivate = 0;
+
+                enemyAnimator.SetTrigger("attack1");
+
+                PlayerMove.isAnyKeyEnabled = false;
+            }
             
             if(rigidbody.IsSleeping())
             {
