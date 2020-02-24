@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyMove_2nd : MonoBehaviour
 {
-    private GameObject enemy;
+    private GameObject enemy2nd;
     private Vector3 enemyPos;
     private CharacterController enemyController;
     private Rigidbody rigidbody;
@@ -22,9 +22,10 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     private float enemyMoveSpeed;
 
-    static public bool isEnemy1stTouched = false;
+    static public bool isEnemy2ndTouched = false;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         enemyController = GetComponent<CharacterController>();
         enemyNavMesh = GetComponent<NavMeshAgent>();
@@ -36,11 +37,11 @@ public class EnemyMove : MonoBehaviour
         zoomCamera = GameObject.Find("ZoomCamera");
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-
-        enemy = GameObject.FindGameObjectWithTag("Enemy1st");
-        enemyPos = enemy.transform.position;
+        enemy2nd = GameObject.FindGameObjectWithTag("Enemy2nd");
+        enemyPos = enemy2nd.transform.position;
 
         if (PlayerMove.playerPos != null)
         {
@@ -48,7 +49,7 @@ public class EnemyMove : MonoBehaviour
 
             dir = PlayerMove.playerPos - enemyPos;
             float d = dir.magnitude;
-            
+
             enemyAnimator.SetFloat("Speed", enemyMoveSpeed);
 
             if (d <= 1.3f)
@@ -59,16 +60,13 @@ public class EnemyMove : MonoBehaviour
 
                 PlayerMove.isAnyKeyEnabled = false;
 
-                isEnemy1stTouched = true;
+                isEnemy2ndTouched = true;
             }
-            
-            if(rigidbody.IsSleeping())
+
+            if (rigidbody.IsSleeping())
             {
                 enemyAnimator.SetFloat("Speed", 0f);
             }
         }
-
     }
-    
-    
 }

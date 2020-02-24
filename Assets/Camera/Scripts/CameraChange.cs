@@ -12,7 +12,10 @@ public class CameraChange : MonoBehaviour
     public GameObject otherCamera;
 
     [SerializeField]
-    public GameObject zoomCamera;
+    public GameObject zoomCamera_1st;
+
+    [SerializeField]
+    public GameObject zoomCamera_2nd;
 
     [SerializeField]
     private GameObject player;
@@ -56,7 +59,17 @@ public class CameraChange : MonoBehaviour
         {
             mainCamera.SetActive(false);
             otherCamera.SetActive(false);
-            zoomCamera.SetActive(true);
+
+            if (EnemyMove.isEnemy1stTouched)
+            {
+                zoomCamera_1st.SetActive(true);
+            }
+
+            if (EnemyMove_2nd.isEnemy2ndTouched)
+            {
+                zoomCamera_2nd.SetActive(true);
+            }
+            
         }
     }
 }
