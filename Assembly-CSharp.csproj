@@ -68,6 +68,7 @@
     <Compile Include="Assets\Enemy\Scripts\EnemyMove.cs" />
     <Compile Include="Assets\Enemy\Scripts\EnemyMove_2nd.cs" />
     <Compile Include="Assets\Enemy\Scripts\EnemyMove_3rd.cs" />
+    <Compile Include="Assets\Enemy\Scripts\EnemySounds.cs" />
     <Compile Include="Assets\Player\Knight\scripts\rotator.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\torch\scene\script\TorchSlider.cs" />

@@ -24,6 +24,7 @@ public class EnemyMove : MonoBehaviour
 
     static public bool isEnemy1stTouched = false;　//敵が自機に接触したときにtrue
 
+
     private void Start()
     {
         enemyController = GetComponent<CharacterController>();
