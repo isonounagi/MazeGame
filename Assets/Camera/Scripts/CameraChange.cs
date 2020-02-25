@@ -40,7 +40,7 @@ public class CameraChange : MonoBehaviour
         {
             mainCamera.SetActive(!mainCamera.activeSelf);
             otherCamera.SetActive(!otherCamera.activeSelf);
-            mainCameraActivate += 1;
+            mainCameraActivate += 1; //スペースを押すごとに加算、2で割り切れるときに2D画面
         }
 
         if (otherCamera.activeSelf)
@@ -58,7 +58,7 @@ public class CameraChange : MonoBehaviour
                 }
         }
 
-        if(mainCameraActivate == 0)
+        if(mainCameraActivate == 0)　//ゲームが止まった時どの敵の追従カメラを有効にするか
         {
             mainCamera.SetActive(false);
             otherCamera.SetActive(false);

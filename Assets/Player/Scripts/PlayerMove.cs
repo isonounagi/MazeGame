@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
-    public static bool isAnyKeyEnabled;
+    public static bool isAnyKeyEnabled;　//キー操作を有効にするかどうかのフラグ
 
     // Use this for initialization
     void Start()
@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
 
         if (isAnyKeyEnabled)
         {
-            if (CameraChange.mainCameraActivate % 2 == 0)
+            if (CameraChange.mainCameraActivate % 2 == 0) //2で割り切れるときに2D画面へ
             {
                 velocity = new Vector3(0, 0, 0);
 
@@ -87,7 +87,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if(CameraChange.mainCameraActivate == 0)
+        if(CameraChange.mainCameraActivate == 0)　//0のときに停止するように
         {
             moveSpeed = 0;
         }

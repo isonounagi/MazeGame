@@ -74,6 +74,7 @@
     <Compile Include="Assets\torch\scene\script\Torchslider2.cs" />
     <Compile Include="Assets\torch\scripts\Torchelight.cs" />
     <None Include="Assets\Player\Knight\shaders\doublesidedshader.shader" />
+    <None Include="Assets\Monster SFX - 111518\Notes.txt" />
     <None Include="Assets\torch\readme.txt" />
     <None Include="Assets\Enemy\cave_troll\shaders\Standard Two Sided Soft Blend.shader" />
     <Reference Include="Unity.Timeline.Editor">
