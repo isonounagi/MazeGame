@@ -12,9 +12,18 @@ public class CameraChange : MonoBehaviour
     public GameObject otherCamera;
 
     [SerializeField]
+    public GameObject zoomCamera_1st;
+
+    [SerializeField]
+    public GameObject zoomCamera_2nd;
+
+    [SerializeField]
+    public GameObject zoomCamera_3rd;
+
+    [SerializeField]
     private GameObject player;
 
-    static public int mainCameraActivate;
+    static public int mainCameraActivate = 1;
 
     
 
@@ -31,7 +40,7 @@ public class CameraChange : MonoBehaviour
         {
             mainCamera.SetActive(!mainCamera.activeSelf);
             otherCamera.SetActive(!otherCamera.activeSelf);
-            mainCameraActivate += 1;
+            mainCameraActivate += 1; //スペースを押すごとに加算、2で割り切れるときに2D画面
         }
 
         if (otherCamera.activeSelf)
@@ -47,6 +56,28 @@ public class CameraChange : MonoBehaviour
                     otherCamera.transform.RotateAround(player.transform.position, Vector3.up, mouseInputX * Time.deltaTime * 200f);
 
                 }
+        }
+
+        if(mainCameraActivate == 0)　//ゲームが止まった時どの敵の追従カメラを有効にするか
+        {
+            mainCamera.SetActive(false);
+            otherCamera.SetActive(false);
+
+            if (EnemyMove.isEnemy1stTouched)
+            {
+                zoomCamera_1st.SetActive(true);
+            }
+
+            if (EnemyMove_2nd.isEnemy2ndTouched)
+            {
+                zoomCamera_2nd.SetActive(true);
+            }
+
+            if (EnemyMove_3rd.isEnemy3rdTouched)
+            {
+                zoomCamera_3rd.SetActive(true);
+            }
+
         }
     }
 }

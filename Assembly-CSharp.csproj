@@ -64,15 +64,20 @@
   <ItemGroup>
     <Compile Include="Assets\AutoWall\Scripts\WallPositions.cs" />
     <Compile Include="Assets\Camera\Scripts\CameraChange.cs" />
-    <Compile Include="Assets\cave_troll\scripts\camera_follow.cs" />
+    <Compile Include="Assets\Enemy\cave_troll\scripts\camera_follow.cs" />
+    <Compile Include="Assets\Enemy\Scripts\EnemyMove.cs" />
+    <Compile Include="Assets\Enemy\Scripts\EnemyMove_2nd.cs" />
+    <Compile Include="Assets\Enemy\Scripts\EnemyMove_3rd.cs" />
+    <Compile Include="Assets\Enemy\Scripts\EnemySounds.cs" />
     <Compile Include="Assets\Player\Knight\scripts\rotator.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\torch\scene\script\TorchSlider.cs" />
     <Compile Include="Assets\torch\scene\script\Torchslider2.cs" />
     <Compile Include="Assets\torch\scripts\Torchelight.cs" />
     <None Include="Assets\Player\Knight\shaders\doublesidedshader.shader" />
+    <None Include="Assets\Monster SFX - 111518\Notes.txt" />
     <None Include="Assets\torch\readme.txt" />
-    <None Include="Assets\cave_troll\shaders\Standard Two Sided Soft Blend.shader" />
+    <None Include="Assets\Enemy\cave_troll\shaders\Standard Two Sided Soft Blend.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/isono/MazeGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -645,6 +650,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{4523C63B-A14D-4336-DE4A-57F2D2991396}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{D68E35F1-6DAA-F5BB-84C6-139581D6F820}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{5F8D3F04-77C6-4F78-3665-363BF92E833C}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
