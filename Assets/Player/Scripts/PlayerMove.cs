@@ -113,12 +113,12 @@ public class PlayerMove : MonoBehaviour
                         //Rayが当たったオブジェクトのtagがPlayerだったら
                         if (hit.collider.tag == "Wall")
                         {
-                            Destroy(hit.transform.gameObject);
+                            Destroy(hit.transform.gameObject);　//ハンマーの効果。目の前の壁を消す。
                             Destroy(hit.transform.gameObject);
                             Destroy(hit.transform.gameObject);
                             isHummerUse = false; //使えるのは一回だけ
 
-                            Destroy(UIDirector.hummerImage);
+                            UIDirector.hummerImage.enabled = false;　//UI画像を非表示に
                         }
 
                     }
@@ -126,8 +126,6 @@ public class PlayerMove : MonoBehaviour
             }
 
         }
-
-
 
         if (CameraChange.mainCameraActivate == 0)　//0のときに停止するように
         {

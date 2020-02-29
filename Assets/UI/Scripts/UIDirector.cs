@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIDirector : MonoBehaviour
 {
     private Canvas canvas;
-    static public Image hummerImage;
+    static public Image hummerImage; //UIのハンマーの画像を格納
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class UIDirector : MonoBehaviour
         {
             if (child.name == "Hummer_Image")
             {
-                hummerImage = child.gameObject.GetComponent<Image>();
+                hummerImage = child.gameObject.GetComponent<Image>();　//UI画像を表示
             }
         }
     }

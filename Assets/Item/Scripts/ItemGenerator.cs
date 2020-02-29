@@ -16,7 +16,7 @@ public class ItemGenerator : MonoBehaviour
             {
                 if (AutoWallPosTag[p].tag == "Path")
                 {
-                    int r = Random.Range(1, 11);
+                    int r = Random.Range(1, 21); //アイテムが置かれる確率
                     if (r == 1)
                     {
                         Instantiate(itemPrefab,AutoWallPosTag[p].transform);
@@ -29,13 +29,13 @@ public class ItemGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AutoWallPosTag = GameObject.FindGameObjectsWithTag("Path");
+        AutoWallPosTag = GameObject.FindGameObjectsWithTag("Path"); //通り道を格納
 
-        getLength = AutoWallPosTag.Length;
+        getLength = AutoWallPosTag.Length;　//配列の長さを取得
 
         Debug.Log(getLength);
 
-        SetItem(hummer);
+        SetItem(hummer);　//アイテム（ハンマーの設置）
     }
 
     // Update is called once per frame
