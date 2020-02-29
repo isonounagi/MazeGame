@@ -59,8 +59,6 @@ public class WallPositions : MonoBehaviour
     public GameObject[][] CreateMaze()
     {
 
-        
-
         // 各マスの初期設定を行う
         for (int y = 0; y < this.Height; y++)
         {
@@ -220,24 +218,10 @@ public class WallPositions : MonoBehaviour
         
         
     }
-
-    /*private void NavMeshCreation()
-    {
-        for (int z = 1; z < 19; z++)
-        {
-            for (int x = 1; x < 19; x++)
-            {
-                if(AutoWallPos[z][x].gameObject.tag == "Path")
-                {
-                    navMeshSurface.BuildNavMesh();
-                }
-            }
-        }
-    }*/
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         WallPos.x = -10;
@@ -277,8 +261,6 @@ public class WallPositions : MonoBehaviour
         ChangeWall();
 
         navMeshSurface = transform.GetComponent<NavMeshSurface>();
-
-        //NavMeshCreation();
 
     }
 

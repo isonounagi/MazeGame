@@ -115,6 +115,7 @@ public class PlayerMove : MonoBehaviour
                         {
                             Destroy(hit.transform.gameObject);
                             Destroy(hit.transform.gameObject);
+                            Destroy(hit.transform.gameObject);
                             isHummerUse = false; //使えるのは一回だけ
 
                             Destroy(UIDirector.hummerImage);
