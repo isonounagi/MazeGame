@@ -77,6 +77,7 @@
     <Compile Include="Assets\torch\scene\script\Torchslider2.cs" />
     <Compile Include="Assets\torch\scripts\Torchelight.cs" />
     <Compile Include="Assets\UI\Scripts\UIDirector.cs" />
+    <Compile Include="Assets\UI\Scripts\UIText.cs" />
     <None Include="Assets\Player\Knight\shaders\doublesidedshader.shader" />
     <None Include="Assets\Monster SFX - 111518\Notes.txt" />
     <None Include="Assets\torch\readme.txt" />

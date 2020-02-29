@@ -219,9 +219,8 @@ public class WallPositions : MonoBehaviour
         
     }
     
-
-    // Start is called before the first frame update
-    void Awake()
+    
+    void Awake()　//Startより前に設定
     {
 
         WallPos.x = -10;
