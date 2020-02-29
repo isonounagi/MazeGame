@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     public static bool isAnyKeyEnabled;　//キー操作を有効にするかどうかのフラグ
     public static bool isHummerUse; //ハンマーを使ったかどうか
 
-    Ray ray;
+    Ray ray; //自機の前から光線を出す
     RaycastHit hit;
     int distance;
 
@@ -30,7 +30,6 @@ public class PlayerMove : MonoBehaviour
         animator = GetComponent<Animator>();
         isAnyKeyEnabled = true;
         isHummerUse = true;
-        
     }
 
     // Update is called once per frame
@@ -39,11 +38,13 @@ public class PlayerMove : MonoBehaviour
         
         playerPos = player.transform.position;
 
+
         //Rayの作成　　　　　　　
         ray = new Ray(playerPos, player.transform.TransformDirection(Vector3.forward));
 
         //Rayの飛ばせる距離
         distance = 1;
+
 
         //Rayの可視化 
         Debug.DrawRay(playerPos, player.transform.TransformDirection(Vector3.forward) * distance, Color.red);
@@ -113,16 +114,21 @@ public class PlayerMove : MonoBehaviour
                         if (hit.collider.tag == "Wall")
                         {
                             Destroy(hit.transform.gameObject);
+                            Destroy(hit.transform.gameObject);
                             isHummerUse = false; //使えるのは一回だけ
 
+                            Destroy(UIDirector.hummerImage);
                         }
 
                     }
                 }
             }
+
         }
 
-        if(CameraChange.mainCameraActivate == 0)　//0のときに停止するように
+
+
+        if (CameraChange.mainCameraActivate == 0)　//0のときに停止するように
         {
             moveSpeed = 0;
         }
@@ -130,4 +136,5 @@ public class PlayerMove : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         characterController.Move(velocity * moveSpeed * Time.deltaTime);
     }
+    
 }
