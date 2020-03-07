@@ -59,7 +59,7 @@ using System.Collections.Generic;
 		void Start() { }
 
 		// Update is called once per frame
-		void LateUpdate()
+		void Update()
 		{
             SmoothFollowMethod(target);
 		}
